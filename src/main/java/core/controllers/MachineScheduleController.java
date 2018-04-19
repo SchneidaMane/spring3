@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -124,10 +125,13 @@ public class MachineScheduleController implements HandlerExceptionResolver, Appl
 		Map<String, Object> model = new HashMap<String, Object>();
 
 		//TODO: Custom error handling for every error. The file too large error page should only show when ex instanceof MaxUploadSizeExceededException
-		/*-
+		System.out.println(ex.getClass());
 		if (ex instanceof MaxUploadSizeExceededException) {
-			model.put("uploadedFile", "");
-		} else {
+			//return new ModelAndView("error/FileUploadTooLargeError", model);
+			return new ModelAndView("error/FileUploadTooLargeError", model);
+		}
+		/*-
+		else {
 			model.put("uploadedFile", "");
 		}
 		model.put("uploadedFile", "");
@@ -138,7 +142,7 @@ public class MachineScheduleController implements HandlerExceptionResolver, Appl
 		// connection
 		// If the attempted upload is below the maxFileSize + maxSwallowSize but
 		// above the maxFileSize, the following ModelAndView will be used.
-		return new ModelAndView("error", model);
+		return new ModelAndView("error/FileNotFound", model);
 	}
 
 	public void setApplicationContext(ApplicationContext context) {

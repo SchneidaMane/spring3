@@ -1,0 +1,91 @@
+JQuery notes
+
+Basic syntax: $(selector).action()
+-A $ to define/access JQuery
+-A selector to query or find HTML elements
+-A JQuery action() to be performed on the elements
+
+$(this).hide() - hides the current element.
+$("p").hide() - hides all <p> elements
+$(".test").hide() - hides all elements with class="test"
+$("#test").hide() - hides the element with id="test"
+It uses css syntax
+
+
+Should put all JQuery methods inside a document ready event:
+$(document).ready(function(){
+	//JQuery methods go here...
+});
+This prevents any JQuery code from running before the document is finished loading.
+The Jquery team has also created an even shorter method for the document ready event:
+$(function(){
+	//JQuery methods go here...
+});
+
+JQuery is tailor-made to respond to events in an HTML page
+Common events:
+Mouse Events:
+	click
+	dblclick
+	mouseenter
+	mouseleave
+Keyboard Events:
+	keypress
+	keydown
+	keyup
+Form Events
+	submit
+	change
+	focus
+	blur
+Document/Window Events
+	load
+	resize
+	scroll
+	unload
+	
+To define what should happen when an event fires, you must pass a function to the event, like so:
+$("p").click(function(){
+	//action goes here
+});
+
+The on() method attaches one or more event handlers for the selected elements:
+$("p").on({
+    mouseenter: function(){
+        $(this).css("background-color", "lightgray");
+    },
+    mouseleave: function(){
+        $(this).css("background-color", "lightblue");
+    },
+    click: function(){
+        $(this).css("background-color", "yellow");
+    }
+}); 
+
+Callback function: with effects, the next line of code can be run even though the effect is not finished. To prevent this, you can create a cllback function:
+$("button").click(function(){
+    $("p").hide("slow", function(){
+        alert("The paragraph is now hidden");
+    });
+}); 
+
+You can run multiple JQuery commands, one after the other, on the same elements(s) if you use chaining:
+$("#p1").css("color", "red").slideUp(2000).slideDown(2000); 
+
+
+JQuery also has lots of methods that make it easy to access and manipulate the DOM
+EX:
+text() - Sets or returns the text content of selected elements
+html() - Sets or returns the content of selected elements (including HTML markup)
+val() - Sets or returns the value of form fields
+attr() - used to get/set attribute values
+
+Add new content:
+append()
+prepend()
+after()
+before()
+
+Remove Content:
+remove() - removes the selected element (and its child elements)
+empty() - removes the child elements from the selected element
