@@ -83,11 +83,6 @@ public class MachineScheduleController implements HandlerExceptionResolver, Appl
 	@PostMapping("/")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
-		// file too large
-		// (128 * 1024)
-		//if (file.getSize() >= 0) {
-		//	return "uploadForm";
-		//}
 		storageService.store(file);
 		String fileName = file.getOriginalFilename();
 

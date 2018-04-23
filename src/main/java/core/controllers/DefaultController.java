@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -27,8 +29,8 @@ public class DefaultController implements HandlerExceptionResolver {
 			servletPath = "/index.html";
 		}
 		String templatePath = "/pages" + servletPath;
-		System.out.println(servletPath);
 		String fullPath = "src/main/resources/templates" + templatePath;
+		System.out.println(templatePath);
 		File f = new File(fullPath);
 		if (f.exists() && !f.isDirectory()) {
 			return templatePath;
@@ -37,8 +39,18 @@ public class DefaultController implements HandlerExceptionResolver {
 		return "/error/FileNotFound";
 	}
 
-	@RequestMapping("/calendar")
+	@GetMapping("/calendar")
 	public String calendar() {
+		return "/pages/calendar.html";
+	}
+
+	//TODO: Sanitize calendarString
+	@PostMapping("/calendar")
+	public String calendarPost(String calendarString) {
+		System.out.println(calendarString);
+		//use cookies to get user/machine information.
+		System.out.println("handler invoked");
+		//should not return until machine schedule has been successfully updated
 		return "/pages/calendar.html";
 	}
 

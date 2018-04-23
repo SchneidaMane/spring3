@@ -78,15 +78,22 @@ $(function () {
 		var entries = jQuery.makeArray(elems);
 		var finalArray = [];
 		var z;
+		var str = "";
 		for(z = 0; z < 168; z++){
 			if(entries[z].className.indexOf("highlighted")>-1){
-				finalArray[z]=1;
+				str += 1;
+				//finalArray[z]=1;
 			}
 			else{
-				finalArray[z]=0
+				str += 0;
+				//finalArray[z]=0
 			}
 		}
-		alert(finalArray);
+		
+		$.post("/calendar", { calendarString : str }, null, null);
+		//alert("post sent");
+		
+		//alert(finalArray);
 	});
 	$("body").append(submitButton);
 });
