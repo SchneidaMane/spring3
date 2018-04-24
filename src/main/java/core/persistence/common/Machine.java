@@ -18,6 +18,9 @@ public class Machine {
 	@Column(name = "machinename")
 	private String machineName;
 
+	@Column(name = "schedule")
+	private String schedule;
+
 	@Column(name = "userid")
 	private int userId;
 
@@ -42,7 +45,15 @@ public class Machine {
 	public void setMachineName(String machineName) {
 		this.machineName = machineName;
 	}
+	
+	public String getSchedule() {
+		return schedule;
+	}
 
+	public void setSchedule(String schedule) {
+		this.schedule = schedule;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -69,7 +80,8 @@ public class Machine {
 
 	public String toString() {
 		return "MACHINE[MachineId: " + this.getMachineId() //
-				+ " Name: " + this.getMachineName() //
+				+ " MachineName: " + this.getMachineName() //
+				+ " Schedule: " + this.getSchedule() //
 				+ " User: " + this.getUserId() //
 				+ " Region: " + this.getRegion() //
 				+ " State: " + this.getState() + "]"; //

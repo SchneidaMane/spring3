@@ -1,19 +1,13 @@
-create table schedule(
+create table userschedule(
 scheduleid int AUTO_INCREMENT,
 schedulestring VARCHAR(168),
 PRIMARY KEY (scheduleid)
 );
 
-create table machineschedule(
-machinescheduleid int AUTO_INCREMENT,
-machineid int,
-scheduleid int,
-PRIMARY KEY (machinescheduleid)
-);
-
 create table machine(
 machineid int AUTO_INCREMENT,
 machinename VARCHAR(100),
+schedule VARCHAR(168),
 region VARCHAR(25),
 state VARCHAR(25),
 userid int,
@@ -31,4 +25,11 @@ create table user(
 userid int AUTO_INCREMENT,
 username VARCHAR(50),
 PRIMARY KEY (userid)
+);
+
+create table userschedule(
+userscheduleid int AUTO_INCREMENT,
+userid int,
+schedulestring VARCHAR(168),
+PRIMARY KEY (userscheduleid)
 );
