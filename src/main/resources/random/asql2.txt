@@ -1,0 +1,34 @@
+create table schedule(
+scheduleid int AUTO_INCREMENT,
+schedulestring VARCHAR(168),
+PRIMARY KEY (scheduleid)
+);
+
+create table machineschedule(
+machinescheduleid int AUTO_INCREMENT,
+machineid int,
+scheduleid int,
+PRIMARY KEY (machinescheduleid)
+);
+
+create table machine(
+machineid int AUTO_INCREMENT,
+machinename VARCHAR(100),
+region VARCHAR(25),
+state VARCHAR(25),
+userid int,
+PRIMARY KEY (machineid)
+);
+
+create table statechangethishour(
+statechangeid int AUTO_INCREMENT,
+machineid int,
+state VARCHAR(25),
+PRIMARY KEY (statechangeid)
+);
+
+create table user(
+userid int AUTO_INCREMENT,
+username VARCHAR(50),
+PRIMARY KEY (userid)
+);

@@ -80,11 +80,9 @@ public class DatabaseReaderJob implements Job {
 		return new RowMapper<MachineSchedule>() {
 			public MachineSchedule mapRow(ResultSet rs, int rowNum) throws SQLException {
 				MachineSchedule machineSchedule = new MachineSchedule();
-				machineSchedule.setId(rs.getInt(1));
-				machineSchedule.setIp(rs.getString(2));
-				machineSchedule.setMachine(rs.getString(3));
-				machineSchedule.setZone(rs.getString(4));
-				machineSchedule.setSchedule(rs.getString(5));
+				machineSchedule.setScheduleId(rs.getInt(1));
+				machineSchedule.setMachineId(rs.getInt(2));
+				machineSchedule.setScheduleId(rs.getInt(3));
 				return machineSchedule;
 			}
 		};
@@ -108,14 +106,15 @@ public class DatabaseReaderJob implements Job {
 			if (nextHour == 168) {
 				nextHour = 0;
 			}
-			String scheduleString = schedule.getSchedule();
-			boolean on = scheduleString.charAt(nextHour) == '1' ? true : false;
-			boolean changed = (scheduleString.charAt(currentHour) != scheduleString.charAt(nextHour)) ? true : false;
+			//TODO: Fix getSchedule because it requires accessing foreign key of schedule
+			//String scheduleString = schedule.getSchedule();
+			//boolean on = scheduleString.charAt(nextHour) == '1' ? true : false;
+			//boolean changed = (scheduleString.charAt(currentHour) != scheduleString.charAt(nextHour)) ? true : false;
 			// Here, if it's not changed, don't put it into the map
-			if (!changed) {
-				continue;
-			}
-			machineToActivationState.put(schedule, on);
+			//if (!changed) {
+			//	continue;
+			//}
+			//machineToActivationState.put(schedule, on);
 		}
 	}
 

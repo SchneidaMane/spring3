@@ -10,7 +10,7 @@ import java.io.IOException;
 import main.java.core.constants.BackendConstants;
 import main.java.core.persistence.google.GoogleJson;
 
-public class JsonTranslator {
+public class GoogleJsonTranslator {
 
 	String username;
 	String json;

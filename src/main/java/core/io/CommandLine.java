@@ -75,6 +75,28 @@ public class CommandLine extends Thread {
 		return success;
 	}
 
+	//No failure string variant
+	public boolean setLine(String nextLine, String stream, String successString) throws InterruptedException {
+
+		boolean success = false;
+		CountDownLatch latch = new CountDownLatch(1);
+		output.setLine(nextLine);
+
+		if (stream.equals("Input")) {
+			input.blockForInput(latch, successString);
+			latch.await();
+			success = input.getSuccess();
+		} else if (stream.equals("Error")) {
+			error.blockForError(latch, successString);
+			latch.await();
+			success = error.getSuccess();
+		}
+		input.end();
+		output.end();
+		error.end();
+		return success;
+	}
+
 	public CommandLine endThreads(long sleepTime) {
 		try {
 			TimeUnit.SECONDS.sleep(sleepTime);

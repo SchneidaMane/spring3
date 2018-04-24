@@ -55,6 +55,18 @@ public class Error extends Thread {
 		}
 	}
 
+	//successString only variant
+	public void blockForError(CountDownLatch latch, String successString) {
+		Pattern pSuccess = Pattern.compile(successString);
+		while (true) {
+			if (pSuccess.matcher(lastString).find()) {
+				this.success = true;
+				latch.countDown();
+				break;
+			}
+		}
+	}
+
 	public boolean getSuccess() {
 		return success;
 	}

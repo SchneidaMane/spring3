@@ -33,7 +33,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import main.java.core.persistence.common.MachineScheduleRepository;
 import main.java.core.persistence.google.GoogleRepository;
 import main.java.fileupload.StorageService;
-import main.java.vm.google.JsonActivator;
+import main.java.vm.google.GoogleJsonActivator;
 
 @Controller
 //This is the String that the user puts in the address bar.
@@ -86,7 +86,7 @@ public class MachineScheduleController implements HandlerExceptionResolver, Appl
 		storageService.store(file);
 		String fileName = file.getOriginalFilename();
 
-		JsonActivator jsonActivator = new JsonActivator(fileName, googleRepository);
+		GoogleJsonActivator jsonActivator = new GoogleJsonActivator(fileName, googleRepository);
 		boolean success = false;
 		success = jsonActivator.activateServiceAccount();
 		if (success) {

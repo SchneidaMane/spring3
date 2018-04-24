@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import main.java.vm.google.GoogleMachineManager;
+
 @Controller
 @RequestMapping("/")
 public class DefaultController implements HandlerExceptionResolver {
@@ -48,6 +50,9 @@ public class DefaultController implements HandlerExceptionResolver {
 	@PostMapping("/calendar")
 	public String calendarPost(String calendarString) {
 		System.out.println(calendarString);
+		GoogleMachineManager manager = new GoogleMachineManager("testaccount@natural-axiom-197904.iam.gserviceaccount.com", "micro1", "us-east1-b");
+		manager.selectAccount();
+		manager.turnOn();
 		//use cookies to get user/machine information.
 		System.out.println("handler invoked");
 		//should not return until machine schedule has been successfully updated

@@ -16,43 +16,43 @@ public class StateChangeThisHour {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
-	private int id;
+	@Column(name = "statechangeid")
+	private int stateChangeId;
 
 	@Column(name = "machineId")
 	private int machineId;
 
-	@Column(name = "turnOn")
-	private boolean turnOn;
+	@Column(name = "state")
+	private String state;
 
-	public int getId() {
-		return id;
+	public int getStateChangeId() {
+		return stateChangeId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setStateChangeId(int stateChangeId) {
+		this.stateChangeId = stateChangeId;
 	}
 
 	public int getMachineId() {
 		return machineId;
 	}
 
-	// @OneToOne(cascade = CascadeType.ALL)
-	// @JoinColumn(name = "machineScheduleId")
 	public void setMachineId(int machineId) {
 		this.machineId = machineId;
 	}
 
-	public boolean getTurnOn() {
-		return turnOn;
+	public String getState() {
+		return state;
 	}
 
-	public void setTurnOn(boolean turnOn) {
-		this.turnOn = turnOn;
+	public void setTurnOn(String state) {
+		this.state = state;
 	}
 
 	@Override
 	public String toString() {
-		return "StateChangeThisHour [id=" + id + ", machineId=" + machineId + ", turnOn=" + turnOn + "]";
+		return "STATECHANGETHISHOUR[StateChangeId: " + this.getStateChangeId() //
+				+ " MachineId: " + this.getMachineId() //
+				+ " State: " + this.getState() + "]"; //
 	}
 }

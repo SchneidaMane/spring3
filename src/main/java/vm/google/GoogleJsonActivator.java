@@ -9,13 +9,13 @@ import main.java.core.io.CommandLine;
 import main.java.core.persistence.google.GoogleJson;
 import main.java.core.persistence.google.GoogleRepository;
 
-public class JsonActivator {
+public class GoogleJsonActivator {
 
 	String fileName;
 	CommandLine commandLine;
 	GoogleRepository googleRepository;
 
-	public JsonActivator(String fileName, GoogleRepository googleRepository) {
+	public GoogleJsonActivator(String fileName, GoogleRepository googleRepository) {
 		this.fileName = fileName;
 		commandLine = new CommandLine();
 		this.googleRepository = googleRepository;
@@ -32,7 +32,7 @@ public class JsonActivator {
 			e.printStackTrace();
 		}
 
-		JsonTranslator translator = new JsonTranslator();
+		GoogleJsonTranslator translator = new GoogleJsonTranslator();
 		GoogleJson googleJson = translator.createFromFile("sampleUser", BackendConstants.UPLOADDIRECTORY + "//" + fileName);
 		googleRepository.selectDatabase("awesomedatabase");
 		googleRepository.save(googleJson);

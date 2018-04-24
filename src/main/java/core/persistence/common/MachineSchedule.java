@@ -35,68 +35,43 @@ public class MachineSchedule {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id")
-	private int id;
+	@Column(name = "machinescheduleid")
+	private int machineScheduleId;
 
-	@Column(name = "ip")
-	private String ip;
+	@Column(name = "machineId")
+	private int machineId;
 
-	@Column(name = "machine")
-	private String machine;
+	@Column(name = "scheduleId")
+	private int scheduleId;
 
-	@Column(name = "zone")
-	private String zone;
-
-	@Column(name = "schedule")
-	private String schedule;
-
-	public int getId() {
-		return id;
+	public int getMachineScheduleId() {
+		return machineScheduleId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMachineScheduleId(int machineScheduleId) {
+		this.machineScheduleId = machineScheduleId;
 	}
 
-	// ip is in decimal version, need to run it through Utilities.ipToLong();
-	public String getIp() {
-		return ip;
+	public int getMachineId() {
+		return machineId;
 	}
 
-	public void setIp(String ip) {
-		this.ip = ip;
+	public void setMachineId(int machineId) {
+		this.machineId = machineId;
 	}
 
-	public String getMachine() {
-		return machine;
+	public int getScheduleId() {
+		return scheduleId;
 	}
 
-	public void setMachine(String machine) {
-		this.machine = machine;
-	}
-
-	public String getZone() {
-		return zone;
-	}
-
-	public void setZone(String zone) {
-		this.zone = zone;
-	}
-
-	public String getSchedule() {
-		return schedule;
-	}
-
-	public void setSchedule(String schedule) {
-		this.schedule = schedule;
+	public void setScheduleId(int scheduleId) {
+		this.scheduleId = scheduleId;
 	}
 
 	@Override
 	public String toString() {
-		return "id: " + this.getId() //
-				+ " ip: " + this.getIp() //
-				+ " machine: " + this.getMachine() //
-				+ " zone: " + this.getZone() //
-				+ " schedule: " + this.getSchedule(); //
+		return "MACHINESCHEDULE[MachineScheduleId: " + this.getMachineScheduleId() //
+				+ " MachineId: " + this.getMachineId() //
+				+ " ScheduleId: " + this.getScheduleId() + "]"; //
 	}
 }

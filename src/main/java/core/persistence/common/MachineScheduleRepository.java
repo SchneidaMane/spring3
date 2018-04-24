@@ -23,7 +23,7 @@ public class MachineScheduleRepository {
 	}
 
 	public void save(MachineSchedule machineSchedule) {
-		jdbc.update("insert into machineschedule" + "(ip, machine, zone, schedule) " + "values (?, ?, ?, ?)", machineSchedule.getIp(), machineSchedule.getMachine(), machineSchedule.getZone(), machineSchedule.getSchedule());
+		jdbc.update("insert into machineschedule" + "(machinescheduleid, machineid, scheduleid) " + "values (?, ?, ?)", machineSchedule.getMachineScheduleId(), machineSchedule.getMachineId(), machineSchedule.getScheduleId());
 	}
 
 	public List<MachineSchedule> findAll() {
@@ -34,11 +34,9 @@ public class MachineScheduleRepository {
 		return new RowMapper<MachineSchedule>() {
 			public MachineSchedule mapRow(ResultSet rs, int rowNum) throws SQLException {
 				MachineSchedule machineSchedule = new MachineSchedule();
-				machineSchedule.setId(rs.getInt(1));
-				machineSchedule.setIp(rs.getString(2));
-				machineSchedule.setMachine(rs.getString(3));
-				machineSchedule.setZone(rs.getString(4));
-				machineSchedule.setSchedule(rs.getString(5));
+				machineSchedule.setMachineScheduleId(rs.getInt(1));
+				machineSchedule.setMachineId(rs.getInt(2));
+				machineSchedule.setScheduleId(rs.getInt(3));
 				return machineSchedule;
 			}
 		};

@@ -51,7 +51,18 @@ public class Input extends Thread {
 				latch.countDown();
 				break;
 			}
+		}
+	}
 
+	//successString only variant
+	public void blockForInput(CountDownLatch latch, String successString) {
+		Pattern pSuccess = Pattern.compile(successString);
+		while (true) {
+			if (pSuccess.matcher(lastString).find()) {
+				this.success = true;
+				latch.countDown();
+				break;
+			}
 		}
 	}
 
